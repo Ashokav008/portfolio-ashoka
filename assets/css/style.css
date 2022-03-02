@@ -124,12 +124,12 @@ h6 {
         text-align: center;
     }
     #header h2 span::before {
-        content: "Full Stack Developer";
+        content: "Developement Enthusiast";
         animation: animate infinite 4s;
     }
     @keyframes animate {
         50% {
-            content: " Competative Programmer  ";
+            content: "Budding Programmer  ";
         }
     }
 }
