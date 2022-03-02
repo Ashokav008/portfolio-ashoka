@@ -106,14 +106,14 @@ h6 {
 }
 
 #header h2 span::before {
-    content: "Full Stack Developer";
+    content: "Developement Enthusiast";
     animation: animate infinite 4s;
     padding-left: 10px;
 }
 
 @keyframes animate {
     50% {
-        content: "Programmer  ";
+        content: "Budding Programmer  ";
     }
 }
 
