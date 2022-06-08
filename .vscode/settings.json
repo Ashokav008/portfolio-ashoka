@@ -1,0 +1,7 @@
+{
+    "editor.smoothScrolling": true,
+    "workbench.list.smoothScrolling": true,
+    "terminal.integrated.scrollback": 100,
+    "editor.mouseWheelScrollSensitivity": 1,
+    "editor.cursorSurroundingLines": 1
+}
