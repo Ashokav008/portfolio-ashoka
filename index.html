@@ -8,7 +8,15 @@
     <title>Ashoka-Portfolio</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    </script>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("CIxNa1aRTY0FgXC99");
+        })();
+    </script>
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -595,7 +603,7 @@
                 </div>
             </div>
 
-            <form method="post" class="php-email-form mt-4 ">
+            <form method="post" id="formData" class="php-email-form mt-4 ">
                 <div class="row ">
                     <div class="col-md-6 form-group ">
                         Name <input type="text " name="name " class="form-control " id="name " placeholder="Your Name " required>
@@ -616,31 +624,42 @@
                     <div class="sent-message ">Your message has been sent. Thank you!</div>
                 </div>
                 <div class="text-center ">
-                    <button type="submit" name="submit">Send Message</button></div>
+                    <button type="submit " id="submit" name="submit ">Send Message</button></div>
             </form>
 
         </div>
     </section>
     <!-- End Contact Section -->
-    <?php 
-    if (isset($_POST["submit"])) {
-      $values = array_values($_POST);
-      $to='ashokwavre.wce@gmail.com';
-      $name=$values[0];
-      $email=$values[1];
-      $subject=$values[2];
-      $message=$values[3];
-    //  $retval= mail($to,$subject,$message);
+    <script type="text/javascript ">
+        const btn = document.querySelector('#submit');
+        const form = document.querySelector('#formData');
 
-    $text="\n\n ------New Msg  Arrived!! Details :--------\nname:  ".$name."\nemail:  ".$email."\nsubject:  ".$subject."\nMessage :  ".$message."\n";
-    $f = fopen("data.txt", "a");
 
-    fwrite($f, $text);
-    fclose($f);
-    echo "Your message has been Sent!!!!";
-    
-  }
-  ?>
+        btn.addEventListener('click', (e) => {
+            // prevent the form from submitting
+            e.preventDefault();
+
+            // show the form values
+            const formData = new FormData(form);
+            const values = [...formData.entries()];
+            // console.log(values);
+            name1 = values[0][1];
+            email1 = values[1][1];
+            subject1 = values[2][1];
+            message1 = values[3][1];
+            var tempParams = {
+                from_name: name1,
+                to_name: 'Ashok Vavare',
+                subject: subject1,
+                message: message1 + "  You can get in touch with him via " + email1
+
+            }
+            emailjs.send('service_jptbkmo', 'template_5vfz6xj', tempParams)
+                .then(function(res) {
+                    console.log("Success", res.status);
+                })
+        });
+    </script>
     <!-- Vendor JS Files -->
     <!-- <script src="assets/vendor/purecounter/purecounter.js "></script> -->
     <!-- <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js "></script> -->
@@ -658,5 +677,7 @@
 
 
 </body>
+
+</html>
 
 </html>
